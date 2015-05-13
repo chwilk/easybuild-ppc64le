@@ -1,0 +1,35 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2015 Rice University
+# Authors::   Chandler Wilkerson <chwilk@rice.edu>
+# License::   MIT/GPL
+# $Id$
+##
+
+easyblock = "Tarball"
+
+name    = "BioBuilds"
+version = "2015.04"
+
+homepage = 'http://biobuilds.org/'
+description = """BioBuilds is a curated and versioned collection of Open Source bioinformatics tools for genomics, pre-built for Linux on both x86 and IBM Power Systems platforms and for Mac OS X."""
+
+toolchain = {'version': 'dummy', 'name': 'dummy'}
+
+sanity_check_paths = {
+    'files': ['README.POWER'],
+    'dirs': ['bin']
+}
+
+sources = ['BioBuilds-%(version)s-ubuntu14.10-ppc64le.tar.gz']
+source_urls = ['http://download.lab7.io/']
+
+modextrapaths = {
+    'PATH': ['bin', 'bin/allpaths'],
+    'LD_LIBRARY_PATH': ['lib', 'lib/ncbi-blast'],
+    'MANPATH': ['share/man'],
+    'CLASSPATH': ['share/java/picard']
+}
+
+moduleclass = 'system'
